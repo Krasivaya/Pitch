@@ -23,4 +23,9 @@ class Pitch(db.Model):
     comments = db.relationship('comment', backref='post', lazy=True)
 
     def __repr__(self):
-        return f"Pitch ( '{self.title}')"
+        return f"Pitch ( '{self.title}', '{self.category}', '{self.posted_date}')"
+    
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    comment = db.Column(db.Text, nullable=False)
+    posted_date = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
