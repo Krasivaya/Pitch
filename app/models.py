@@ -10,6 +10,7 @@ class User(db.Model):
     username = db.Column(db.String(255), unique=True, nullable=False)
     email = db.Column(db.String(255), unique=True, nullable=False, index = True)
     password = db.Column(db.String(100), nullable=False)
+    profile = db.Column(db.String(100), nullable=False)
     posts = db.relationship('Post', backref='author', lazy=True)
     comments = db.relationship('Comment', backref='author', lazy=True)
 
